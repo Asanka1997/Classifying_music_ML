@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Music Genre Prediction</title>
+    <!-- Add some CSS for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            text-align: center;
+            margin-top: 30px;
+        }
+        textarea {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        /* Style for the pie chart image */
+        .genre-chart {
+            max-width: 35%; /* Maximum width of the image */
+            height: auto; /* Maintain the aspect ratio */
+            display: block; /* Display block to apply margin auto */
+            margin: 20px auto; /* Center the image and provide some spacing */
+        }
+        /* Style for the name and index */
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Genre Prediction</h1>
+    <form action="/" method="post">
+        <textarea name="lyrics" cols="30" rows="10" placeholder="Paste lyrics here..."></textarea><br>
+        <input type="submit" value="Predict Genre">
+    </form>
+    {% if genre %}
+        <h2>Predicted Genre: {{ genre }}</h2>
+    {% endif %}
+    <!-- Add the pie chart image with a class for styling -->
+    <div>
+        <img src="{{ url_for('static', filename='genre_probability.png') }}" alt="Genre Probability Pie Chart" class="genre-chart">
+    </div>
+    <!-- Add name and index -->
+    <div class="footer">
+        A.A.M.K. Wijerathne | 248291T
+    </div>
+</body>
+</html>
